@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 
 import './App.css'
 import Header from './components/Header'
+import Beforerun from './components/Beforerun';
 
 function App() {
+   const [info,setInfo]=useState(false)
  useEffect(()=>{
         const options =  {headers: {accept: 'application/json'}};
 
@@ -14,7 +16,7 @@ function App() {
     },[])
   return (
     <>
-      <Header/>
+    {info==true ?  <Header/>: <Beforerun/>}
     </>
   )
 }

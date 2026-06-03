@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const header = () => {
+const Header = () => {
+   
   return (
-    <div>header</div>
+    <div>
+     
+       Header
+        
+    </div>
   )
 }
-
-export default header
+//5c6ea490a269cfcefee83b4aefce6551
+export default Header

@@ -1,0 +1,18 @@
+.topHeader{
+    width: 95%;
+    height: 100px;
+background: linear-gradient(145deg, #065f7a, #033e51);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) inset;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       margin: 20px auto;
+       border-radius: 100px;
+}
+
+.topHeader .searchInp{
+    width: 50%;
+    height: 30px;
+    padding-left: 15px;
+   
+}

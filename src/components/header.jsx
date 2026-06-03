@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react'
-
+import styles from '../assets/styles/header.module.css'
 const Header = () => {
    
   return (
-    <div>
-     
-       Header
-        
-    </div>
+    <nav className={styles.topHeader}>
+      <input className={styles.searchInp} type="text" placeholder='search quickly'/>
+            
+    </nav>
   )
 }
-//5c6ea490a269cfcefee83b4aefce6551
 export default Header

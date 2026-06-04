@@ -6,5 +6,16 @@
 
 body{
   background-color: #026588;
+    font-family: "Roboto", sans-serif;
+
+}
+
+.roboto-uniquifier {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }
 

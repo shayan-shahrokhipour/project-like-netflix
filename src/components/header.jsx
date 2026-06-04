@@ -17,7 +17,7 @@ const Header = ({children}) => {
 
        <div className={letResponsive ? styles.animation : styles.responsive}>
            <div className={styles.closeBtn}>
-            <button onClick={hamburgerMenu}><LiaDoorClosedSolid />
+            <button onClick={hamburgerMenu}><LiaDoorClosedSolid className={styles.closeIcon} />
         </button>
            </div>
         {children}

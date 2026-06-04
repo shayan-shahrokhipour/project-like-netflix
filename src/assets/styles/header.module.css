@@ -40,7 +40,7 @@ background: linear-gradient(145deg, #065f7a, #033e51); box-shadow: 0 -10px 30px 
     justify-content: space-around;
 }
 
-.closeBtn button{
+.closeBtn{
 display: none;
 }
 
@@ -81,7 +81,14 @@ display: none;
          width: 90%;
     }.infoHolder {
         width: 90%;
-    }.closeBtn button{
+    }.closeBtn {
         display: block;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+       
+    }.closeBtn .closeIcon  {
+        font-size: 35px;
+
     }
 }

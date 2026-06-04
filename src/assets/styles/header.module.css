@@ -1,21 +1,87 @@
-.topHeader{
-    width: 95%;
+.header{
+    width: 100%;
     height: 100px;
-background: linear-gradient(145deg, #065f7a, #033e51);
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) inset,
-    0 8px 30px rgba(0, 0, 0, 0.35);
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       margin: 20px auto;
-       border-radius: 100px;
- border: 2px solid rgba(6, 95, 122, 0.7);
 }
 
-.topHeader .searchInp{
-    width: 50%;
-    height: 30px;
-    padding-left: 15px;
+.menu{
+    width: 90%;
+    height: 100px;
+background: linear-gradient(145deg, #065f7a, #033e51); box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) inset, 0 8px 30px rgba(0, 0, 0, 0.35);    margin: 10px auto;
     border-radius: 100px;
-   
+    position: relative;
+}
+
+.responsive{
+    width: 100%;
+    height: 100px;
+     display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu input{
+    width: 50%;
+    height: 20px;
+    padding: 15px;
+}
+
+.hamburger {
+    position: absolute;
+    
+    font-size: 25px;
+    display: none;
+}
+
+.infoHolder{
+    width: 15%;
+
+    display: flex;
+    color: #ffff;
+    justify-content: space-around;
+}
+
+.closeBtn button{
+display: none;
+}
+
+@media only screen and (max-width:768px){
+    .responsive{
+        width: 90%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+       background: linear-gradient(145deg, #065f7a, #033e51);
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) inset,
+        0 8px 30px rgba(0, 0, 0, 0.35);
+        transition: transform ease-in 200ms;
+    }.hamburger{
+        display: block;
+        font-size: 40px;
+        top: 20px;
+        left: 20px;
+    }.animation{
+        width: 90%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+         right: 0;
+         transform: translateX(0%);
+          background: linear-gradient(145deg, #065f7a, #033e51);
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) inset,
+        0 8px 30px rgba(0, 0, 0, 0.35);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 50px;
+         transition: transform ease-in 200ms;
+    }.menu input{
+         width: 90%;
+    }.infoHolder {
+        width: 90%;
+    }.closeBtn button{
+        display: block;
+    }
 }

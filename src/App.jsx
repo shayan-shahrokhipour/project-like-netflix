@@ -3,9 +3,13 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Beforerun from './components/Beforerun';
-
+import styles from './assets/styles/header.module.css'
 function App() {
    const [info,setInfo]=useState(false)
+    const [value , setValue]=useState({
+    name:'',
+    family:''
+   })
  useEffect(()=>{
         const options =  {headers: {accept: 'application/json'}};
 
@@ -16,7 +20,17 @@ function App() {
     },[])
   return (
     <>
-    {info==true ?  <Header/>: <Beforerun/>}
+    {info==true 
+    
+    ? 
+     <Header>
+      <div className={styles.infoHolder}>
+         <p>{value.name}</p>
+       <p>{value.family}</p>
+      </div>
+    </Header>
+      :
+       <Beforerun setInfo={setInfo} value={value} setValue={setValue}/>}
     </>
   )
 }

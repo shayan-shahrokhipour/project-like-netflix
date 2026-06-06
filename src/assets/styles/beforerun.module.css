@@ -1,5 +1,4 @@
 
-
 .roboto-uniquifier {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
@@ -27,4 +26,14 @@
 
 .login input{
     width: 50%;
+}
+
+@media only screen and (max-width:768px){
+  .login{
+     width: 90%;
+  }.login h3{
+    text-align: center;
+  }.login input{
+    width: 90%;
+  }
 }

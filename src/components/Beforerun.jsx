@@ -3,7 +3,7 @@ import styles from '../assets/styles/beforerun.module.css'
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 </style>
-const Beforerun = ({setInfo,setValue,value}) => {
+const Beforerun = ({setInfo,setValue,value,setResponse}) => {
   
    const {name,family}=value
 
@@ -14,8 +14,11 @@ const Beforerun = ({setInfo,setValue,value}) => {
    }
    const addHandeler=()=>{
     console.log(name,family);
+    
       if(name && family){
-        setInfo(true)
+        setInfo(true);
+         setResponse(true)
+
       }
    }
   return (

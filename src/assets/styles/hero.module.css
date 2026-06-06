@@ -1,0 +1,28 @@
+.Hero{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.Hero h1,.Hero p{
+ text-align: center; 
+ color: #ffff;  
+}
+
+
+
+@media only screen and (max-width:768px){
+    .Hero {
+       width: calc(90% - 10%);
+    }
+   
+    .Hero h1{
+       
+        text-align: start;
+        padding: 5%;
+        font-size: 25px;
+    }.Hero P{
+         text-align: start;
+        padding: 5%;
+        font-weight: 100;
+    }
+}

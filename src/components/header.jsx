@@ -10,6 +10,7 @@ const Header = ({children}) => {
        setLetResponsive(!letResponsive)
    }
   return (
+  <>
    <header className={styles.header}>
 
     <nav className={styles.menu}>
@@ -26,6 +27,7 @@ const Header = ({children}) => {
          
     </nav>
    </header>
+  </>
   )
 }
 export default Header

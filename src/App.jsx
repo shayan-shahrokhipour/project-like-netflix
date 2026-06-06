@@ -9,13 +9,14 @@ import { CircleLoader } from 'react-spinners';
 function App() {
    const [info,setInfo]=useState(false)
    const [showInfo,setShowinfo]=useState([])
+   const [loading ,setLoading]=useState(false)
    const [response,setResponse]=useState(false)
    const [value , setValue]=useState({
     name:'',
     family:''
    })
 
-    
+      
    
      useEffect(()=>{
      if(response){
@@ -24,6 +25,9 @@ function App() {
     const res =  await fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&api_key=5c6ea490a269cfcefee83b4aefce6551',options)
     const json = await res.json()
     setShowinfo(json.results);
+     setInfo(true)
+
+    setLoading(false)
     console.log(json);
     
    } 
@@ -33,10 +37,19 @@ function App() {
    console.log(response);
    
     },[response])
-   
+    const getValue=(e)=>{
+     const na = e.target.name;
+     const val = e.target.value;
+     setValue(value=>({...value ,[na] : val}))
+   }
+  
   return (
     <>
-    {showInfo.length==0 && <CircleLoader />}
+    
+    {loading == true &&  <div className={styles.loadingHolder}>
+      <CircleLoader size={100} />
+          
+      </div>}
     {info==true
     
     ? 
@@ -51,7 +64,9 @@ function App() {
     </>
 
       :
-       <Beforerun setInfo={setInfo} value={value} setValue={setValue} setResponse={setResponse}/>}
+       <Beforerun  value={value} setValue={setValue} setResponse={setResponse} setLoading={setLoading}/>
+        
+        }
 
     </>
   )

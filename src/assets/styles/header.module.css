@@ -44,6 +44,15 @@ background: linear-gradient(145deg, #065f7a, #033e51); box-shadow: 0 -10px 30px 
 display: none;
 }
 
+
+.loadingHolder{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+margin-top: 80px;
+}
+
+
 @media only screen and (max-width:768px){
     .responsive{
         width: 90%;

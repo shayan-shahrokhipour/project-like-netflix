@@ -8,6 +8,7 @@
     "wdth" 100;
 }
 
+
 .login{
     width: 50%;
     height: 300px;
@@ -27,6 +28,8 @@
 .login input{
     width: 50%;
 }
+
+
 
 @media only screen and (max-width:768px){
   .login{

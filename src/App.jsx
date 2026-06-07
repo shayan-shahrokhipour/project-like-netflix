@@ -54,13 +54,13 @@ function App() {
     
     ? 
     <>
-     <Header>
+     <Header loading={loading}>
       <div className={styles.infoHolder}>
          <p>{value.name}</p>
        <p>{value.family}</p>
       </div>
     </Header>
-              <Hero/>
+              <Hero loading={loading}/>
     </>
 
       :

@@ -10,6 +10,7 @@ const Hero = ({loading,children}) => {
     <section className={`${styles.Hero} ${lifting ? styles.liftingText : ""}`}>
        <h1>Enjoy Movie & Shows in Stuning Quality </h1>
        <p>watch what matters</p>
+       {children}
     </section>
   )
 }

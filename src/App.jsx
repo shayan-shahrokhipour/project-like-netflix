@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 
 import './App.css'
 import Header from './components/Header'
 import Hero from './components/Hero';
 import Beforerun from './components/Beforerun';
 import styles from './assets/styles/header.module.css'
+import Herostyles from './assets/styles/hero.module.css'
 import { CircleLoader } from 'react-spinners';
+
+
 function App() {
    const [info,setInfo]=useState(false)
    const [showInfo,setShowinfo]=useState([])
@@ -61,8 +64,8 @@ function App() {
       </div>
     </Header>
         <Hero loading={loading}>
-            
-              </Hero>      
+            {showInfo.map(item=>(<img key={item.id} className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}></img>))}
+        </Hero>      
     </>
 
       :

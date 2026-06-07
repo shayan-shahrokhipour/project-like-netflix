@@ -60,7 +60,9 @@ function App() {
        <p>{value.family}</p>
       </div>
     </Header>
-              <Hero loading={loading}/>
+        <Hero loading={loading}/>
+                
+              {/* </Hero> */}      
     </>
 
       :

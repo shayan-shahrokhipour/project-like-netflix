@@ -6,11 +6,11 @@
 .menu{
     width: 90%;
     height: 100px;
-background: linear-gradient(145deg, #065f7a, #033e51); box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) inset, 0 8px 30px rgba(0, 0, 0, 0.35);    margin: 10px auto;
+background: linear-gradient(145deg, #065f7a, #033e51); box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) inset, 0 8px 30px rgba(0, 0, 0, 0.35);   
+ margin: 10px auto;
     border-radius: 100px;
     position: relative;
-    transform: translateY(50px);
-    transition: transform ease 500ms;
+   
 
 }
 
@@ -31,7 +31,6 @@ background: linear-gradient(145deg, #065f7a, #033e51); box-shadow: 0 -10px 30px 
 .hamburger {
     position: absolute;
     
-    font-size: 25px;
     display: none;
 }
 
@@ -55,10 +54,7 @@ display: none;
 margin-top: 80px;
 }
 
-.menu.liftingUp{
-    
-transform: translateY(0);
-}
+
 
 @media only screen and (max-width:768px){
     .responsive{
@@ -72,27 +68,20 @@ transform: translateY(0);
         box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) inset,
         0 8px 30px rgba(0, 0, 0, 0.35);
         transition: transform ease-in 200ms;
-    }.hamburger{
-        display: block;
-        font-size: 40px;
-        top: 20px;
-        left: 20px;
-    }.animation{
-        width: 90%;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-         right: 0;
-         transform: translateX(0%);
-          background: linear-gradient(145deg, #065f7a, #033e51);
-        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) inset,
-        0 8px 30px rgba(0, 0, 0, 0.35);
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         gap: 50px;
-         transition: transform ease-in 200ms;
+                z-index: 205;
+
+    }.hamburger{
+        display: block;
+        font-size: 40px;
+        top: 20px;
+        left: 20px;
+    }.responsive.animation{
+         transform: translateX(0);
     }.menu input{
          width: 90%;
     }.infoHolder {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../assets/styles/hero.module.css'
+import { CiCircleChevLeft } from "react-icons/ci";
 const Hero = ({loading,children}) => {
   const [lifting,setLifting]=useState(false);
       useEffect(()=>{

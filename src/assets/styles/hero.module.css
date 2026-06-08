@@ -3,8 +3,6 @@
     margin-top: 10px;
     transform: translateY(50px);
     transition: transform ease-in 500ms;
-    position: relative;
-   
 }
 
 .Hero.liftingText{
@@ -17,16 +15,27 @@
  color: #ffff;  
 }
 
+.sliderHolder{
+    width: 100%;
+    height: 100%;
+position: relative;
+margin: auto;
+}
+
 .sliderImg{
-    width: 25%;
-    height: 100px;
+    position: absolute;
+    width: 90%;
+    height: 720px;
+     left: 0;
+     right: 0;
+     margin: auto;
 }
 
 
 
 @media only screen and (max-width:768px){
     .Hero {
-       width: calc(90% - 10%);
+       width: 90% ;
     }
    
     .Hero h1{
@@ -38,5 +47,9 @@
          text-align: start;
         padding: 5%;
         font-weight: 100;
+    }.sliderImg{
+        height: 300px;  
+    }.sliderHolder{
+        margin: auto;
     }
 }

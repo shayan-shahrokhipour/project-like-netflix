@@ -64,7 +64,7 @@ function App() {
       </div>
     </Header>
         <Hero loading={loading}>
-            {showInfo.map(item=>(<img key={item.id} className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}></img>))}
+            {showInfo.map(item=>(<div key={item.id} className={Herostyles.sliderHolder}><img key={item.id} className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}></img></div>))}
         </Hero>      
     </>
 

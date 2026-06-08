@@ -34,8 +34,7 @@ function App() {
       //dispatch functions
       const carouselLeft=()=>{
        if(slider < showInfo.length - 1){
-         dispatch({type :"plus",
-          startagain:showInfo[initial]}
+         dispatch({type :"plus"}
          )
        }
       }

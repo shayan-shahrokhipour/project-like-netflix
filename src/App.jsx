@@ -8,20 +8,21 @@ import Herostyles from './assets/styles/hero.module.css'
 import { CircleLoader } from 'react-spinners';
 import { CiCircleChevLeft } from "react-icons/ci";
 import { CiCircleChevRight } from "react-icons/ci";
+
+//start a carousel
 const initial = 0
 const reducer=(state,action)=>{
 if(action.type=="plus"){
-   return(state + 1)
-
-}else if(action.type=="minus"){
-  return(state - 1)
+       return(state + 1) 
+}else if(action.type=="minus" ){  
+             return(state - 1) 
 }
 
 }
 function App() {
+  //for carousel
   const[slider,dispatch]=useReducer(reducer,initial)
-  console.log({slider});
-
+  //=>carousel
    const [info,setInfo]=useState(false)
    const [showInfo,setShowinfo]=useState([])
    const [loading ,setLoading]=useState(false)
@@ -30,15 +31,22 @@ function App() {
     name:'',
     family:''
    })
-
+      //dispatch functions
       const carouselLeft=()=>{
-        dispatch({type :"plus"})
+       if(slider < showInfo.length - 1){
+         dispatch({type :"plus",
+          startagain:showInfo[initial]}
+         )
+       }
       }
 
       const carouselright=()=>{
-        dispatch({type:"minus"})
+       if(slider>0){
+         dispatch({type:"minus"})
+       }
       }
-   
+   //end of dispatch functions
+   //get Data 
      useEffect(()=>{
      if(response){
       async function data(){
@@ -46,9 +54,9 @@ function App() {
     const res =  await fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&api_key=5c6ea490a269cfcefee83b4aefce6551',options)
     const json = await res.json()
     setShowinfo(json.results);
-
+       //login
      setInfo(true)
-
+   //turn off loading
     setLoading(false)
     console.log(json);
     

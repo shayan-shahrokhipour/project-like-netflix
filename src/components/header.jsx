@@ -7,7 +7,6 @@ import Hero from '../components/Hero';
 
 const Header = ({children,loading}) => {
    const [letResponsive,setLetResponsive]=useState(false);
-   const [animate,setAnimate]=useState(false);
   
    const hamburgerMenu =()=>{
        setLetResponsive(!letResponsive)

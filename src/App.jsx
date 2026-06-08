@@ -8,6 +8,7 @@ import styles from './assets/styles/header.module.css'
 import Herostyles from './assets/styles/hero.module.css'
 import { CircleLoader } from 'react-spinners';
 import { CiCircleChevLeft } from "react-icons/ci";
+import { CiCircleChevRight } from "react-icons/ci";
 
 function App() {
   // const[slider,dispatch]=useReducer(reducer,initial)
@@ -65,10 +66,15 @@ function App() {
       </div>
     </Header>
         <Hero loading={loading}>
-            {showInfo.map(item=>(<div key={item.id} className={Herostyles.sliderHolder}><img key={item.id} className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}></img>
-            <CiCircleChevLeft />
+           <div className={Herostyles.slider}>
+             {showInfo.map(item=>(<div key={item.id} className={Herostyles.sliderHolder}><img key={item.id} className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}></img>
 
             </div>))}
+            <CiCircleChevLeft className={`${Herostyles.icons} ${Herostyles.leftIcon}`}/>
+            <CiCircleChevRight className={`${Herostyles.icons} ${Herostyles.leftIcon}`}/>
+
+           </div>
+
         </Hero>      
     </>
 

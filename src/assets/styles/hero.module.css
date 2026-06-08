@@ -15,10 +15,33 @@
  color: #ffff;  
 }
 
+.slider{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.icons{
+position: absolute;
+    top: 350px;
+     color: #ffff;
+            font-size: 40px;
+    cursor: pointer;
+}
+
+.leftIcon{
+    left: 10%;
+}
+
+.rightIcon{
+    right: 10%;
+}
+
 .sliderHolder{
     width: 100%;
     height: 100%;
     position: relative;
+
 }
 
 .sliderImg{
@@ -30,7 +53,6 @@
     margin: auto;
      border-radius: 10px;
 }
-
 
 
 @media only screen and (max-width:768px){

@@ -1,5 +1,4 @@
 import { useEffect, useReducer, useState } from 'react'
-
 import './App.css'
 import Header from './components/Header'
 import Hero from './components/Hero';
@@ -9,9 +8,20 @@ import Herostyles from './assets/styles/hero.module.css'
 import { CircleLoader } from 'react-spinners';
 import { CiCircleChevLeft } from "react-icons/ci";
 import { CiCircleChevRight } from "react-icons/ci";
+const initial = 0
+const reducer=(state,action)=>{
+if(action.type=="plus"){
+   return(state + 1)
 
+}else if(action.type=="minus"){
+  return(state - 1)
+}
+
+}
 function App() {
-  // const[slider,dispatch]=useReducer(reducer,initial)
+  const[slider,dispatch]=useReducer(reducer,initial)
+  console.log({slider});
+
    const [info,setInfo]=useState(false)
    const [showInfo,setShowinfo]=useState([])
    const [loading ,setLoading]=useState(false)
@@ -21,7 +31,13 @@ function App() {
     family:''
    })
 
-      
+      const carouselLeft=()=>{
+        dispatch({type :"plus"})
+      }
+
+      const carouselright=()=>{
+        dispatch({type:"minus"})
+      }
    
      useEffect(()=>{
      if(response){
@@ -30,6 +46,7 @@ function App() {
     const res =  await fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&api_key=5c6ea490a269cfcefee83b4aefce6551',options)
     const json = await res.json()
     setShowinfo(json.results);
+
      setInfo(true)
 
     setLoading(false)
@@ -67,11 +84,11 @@ function App() {
     </Header>
         <Hero loading={loading}>
            <div className={Herostyles.slider}>
-             {showInfo.map(item=>(<div key={item.id} className={Herostyles.sliderHolder}><img key={item.id} className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}></img>
+             <div className={Herostyles.sliderHolder}><img  className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${showInfo[slider].backdrop_path}`}></img>
 
-            </div>))}
-            <CiCircleChevLeft className={`${Herostyles.icons} ${Herostyles.leftIcon}`}/>
-            <CiCircleChevRight className={`${Herostyles.icons} ${Herostyles.leftIcon}`}/>
+            </div>
+            <CiCircleChevLeft className={`${Herostyles.icons} ${Herostyles.leftIcon}`} onClick={carouselLeft}/>
+            <CiCircleChevRight className={`${Herostyles.icons} ${Herostyles.rightIcon}`} onClick={carouselright} />
 
            </div>
 

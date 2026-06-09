@@ -1,5 +1,6 @@
 .Hero{
     width: 100%;
+    height: 100%;
     margin-top: 10px;
     transform: translateY(50px);
     transition: transform ease-in 500ms;
@@ -40,17 +41,14 @@ position: absolute;
 .sliderHolder{
     width: 100%;
     height: 100%;
-    position: relative;
 
 }
 
 .sliderImg{
-  position: absolute;
     width: 90%;
     height: 720px;
-    left: 0;
-    right: 0;
-    margin: auto;
+    display: block;
+    margin: 0 auto;
      border-radius: 10px;
 }
 
@@ -71,5 +69,7 @@ position: absolute;
         font-weight: 100;
     }.sliderImg{
         height: 300px; 
+    }.icons{
+        top: 130px;
     }
 }

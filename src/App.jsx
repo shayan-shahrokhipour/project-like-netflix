@@ -2,6 +2,7 @@ import { useEffect, useReducer, useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Hero from './components/Hero';
+import CardFillm from './components/CardFilm';
 import Beforerun from './components/Beforerun';
 import styles from './assets/styles/header.module.css'
 import Herostyles from './assets/styles/hero.module.css'
@@ -101,14 +102,12 @@ function App() {
            <div className={Herostyles.slider}>
              <div className={Herostyles.sliderHolder}>
              <img  className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${showInfo[slider].backdrop_path}`}></img>
-
             </div>
             <CiCircleChevLeft className={`${Herostyles.icons} ${Herostyles.leftIcon}`} onClick={carouselLeft}/>
             <CiCircleChevRight className={`${Herostyles.icons} ${Herostyles.rightIcon}`} onClick={carouselright} />
-
            </div>
-
-        </Hero>      
+        </Hero>
+        <CardFillm showInfo={showInfo}/>      
     </>
 
       :

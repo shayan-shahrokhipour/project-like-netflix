@@ -16,6 +16,10 @@ if(action.type=="plus"){
        return(state + 1) 
 }else if(action.type=="minus" ){  
              return(state - 1) 
+}else if(action.type=="reset"){
+  return(state = 0)
+}else if(action.type=="backtoend"){
+  return(state=action.value)
 }
 
 }
@@ -36,12 +40,16 @@ function App() {
        if(slider < showInfo.length - 1){
          dispatch({type :"plus"}
          )
+       }else{
+        dispatch({type:"reset"})
        }
       }
 
       const carouselright=()=>{
        if(slider>0){
          dispatch({type:"minus"})
+       }else{
+        dispatch({type:"backtoend",value:showInfo.length-1})
        }
       }
    //end of dispatch functions
@@ -91,7 +99,8 @@ function App() {
     </Header>
         <Hero loading={loading}>
            <div className={Herostyles.slider}>
-             <div className={Herostyles.sliderHolder}><img  className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${showInfo[slider].backdrop_path}`}></img>
+             <div className={Herostyles.sliderHolder}>
+             <img  className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${showInfo[slider].backdrop_path}`}></img>
 
             </div>
             <CiCircleChevLeft className={`${Herostyles.icons} ${Herostyles.leftIcon}`} onClick={carouselLeft}/>

@@ -1,21 +1,14 @@
-.cardsHolder{
-    margin-top: 10px;
-    width: 100%;
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 5px;
-}
 
 .cards{
-    width: 22%;
+    width: 70%;
     height: 300px;
          background-color: #014a5f;
          border-radius: 10px;
-
+         margin: 0 auto;
+         margin-top: 10px;
 }
+
+
 
 .cards img{
     width: 100%;
@@ -25,12 +18,16 @@
 
 }
 
+.cards h3{
+    color: #fff;
+}
+
+.cards p{
+    color: #fff;
+    text-align: center;
+}
+
 @media only screen and (max-width:768px){
-    .cardsHolder{
-        flex-direction: column;
-        height: auto;
-        gap: 10px;
-    }
     .cards{
         width: 90%;
         

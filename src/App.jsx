@@ -2,14 +2,13 @@ import { useEffect, useReducer, useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Hero from './components/Hero';
-import CardFillm from './components/CardFilm';
 import Beforerun from './components/Beforerun';
+import CardFillm from './components/CardFilm';
 import styles from './assets/styles/header.module.css'
 import Herostyles from './assets/styles/hero.module.css'
 import { CircleLoader } from 'react-spinners';
 import { CiCircleChevLeft } from "react-icons/ci";
 import { CiCircleChevRight } from "react-icons/ci";
-
 //start a carousel
 const initial = 0
 const reducer=(state,action)=>{
@@ -24,6 +23,7 @@ if(action.type=="plus"){
 }
 
 }
+ 
 function App() {
   //for carousel
   const[slider,dispatch]=useReducer(reducer,initial)
@@ -80,7 +80,6 @@ function App() {
      const val = e.target.value;
      setValue(value=>({...value ,[na] : val}))
    }
-  
   return (
     <>
     
@@ -107,6 +106,8 @@ function App() {
             <CiCircleChevRight className={`${Herostyles.icons} ${Herostyles.rightIcon}`} onClick={carouselright} />
            </div>
         </Hero>
+     
+            
         <CardFillm showInfo={showInfo}/>      
     </>
 

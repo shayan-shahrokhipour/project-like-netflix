@@ -8,6 +8,7 @@ import { IoIosArrowForward } from "react-icons/io";
 const CardFillm = ({showInfo}) => {
  const [index , setIndex]= useState(0);
  const [getwidth,setGetwidth]=useState(window.innerWidth)
+ const [like ,setLike]=useState({})
  
  console.log(getwidth);
  useEffect(()=>{
@@ -40,6 +41,10 @@ const CardFillm = ({showInfo}) => {
    }
    console.log(index);
 
+ //end of carousel 
+    const iconHandeler=(item)=>{
+       setLike(like => ({...like,[item.id] : !like[item.id]}))
+    }
    return (
     <>
       <section className={styles.cardHolder}>
@@ -50,8 +55,8 @@ const CardFillm = ({showInfo}) => {
           
        </div>))
        :
-        triplet.map(item =>(<div key={item.id} className={styles.cards}>
-                            <FaHeart className={styles.heartIcon}/>
+        triplet.map(item =>(<div key={item.id} className={styles.cards} >
+                            <FaHeart style={{color: like[item.id]? "red" : "white"}} className={styles.heartIcon} onClick={()=>iconHandeler(item)}/>
 
         <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
 

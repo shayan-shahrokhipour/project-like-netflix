@@ -1,51 +1,74 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "../assets/styles/cardfilm.module.css"
-import CarouselModule from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-const Carousel = CarouselModule.default;
+import { FaHeart } from "react-icons/fa";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
+
 
 const CardFillm = ({showInfo}) => {
- const [fav,Setfav]=useState(false)
+ const [index , setIndex]= useState(0);
+ const [getwidth,setGetwidth]=useState(window.innerWidth)
+ 
+ console.log(getwidth);
+ useEffect(()=>{
+  const handleResize=()=>setGetwidth(window.innerWidth)
+  window.addEventListener("resize",handleResize)
+  return ()=> window.removeEventListener("resize",handleResize)
+ },[])
+ 
 
- const getFav =()=>{
-      Setfav(!fav)
-     
-      console.log(fav);
-      
- }
+  const firstColumn = showInfo.slice(index,index + 1)
+  console.log(firstColumn);
 
- const responsive = {
-   superLargeDesktop: {
-     // the naming can be any, depends on you.
-     breakpoint: { max: 4000, min: 3000 },
-     items: 5
-   },
-   desktop: {
-     breakpoint: { max: 3000, min: 1024 },
-     items: 3
-   },
-   tablet: {
-     breakpoint: { max: 1024, min: 768 },
-     items: 2
-   },
-   mobile: {
-     breakpoint: { max: 767, min: 0 },
-     items: 1
+
+
+  const triplet = showInfo.slice(index,index+3)
+   console.log(triplet);
+   
+   const moveCarouselRight=()=>{
+    if(index < showInfo.length-3 || index < showInfo.length -1){
+      setIndex(index+1)
+    }
    }
- };
-   console.log(showInfo);
-  
+   console.log(index);
+   
+    const moveCarouselLeft=()=>{
+      if(index>0){
+            setIndex(index-1)
+
+      }
+   }
+   console.log(index);
+
    return (
-     <Carousel responsive={responsive}>
-           {showInfo.map(item => (<div className={styles.cards}>
-           <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
-           <h3>{item.name}</h3>
-           <p>{item.overview}</p>
-        </div>))}
+    <>
+      <section className={styles.cardHolder}>
+
+       {getwidth <= 767 ? firstColumn.map(item => (
+        <div key={item.id} className={styles.cards}>
+        <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
+          
+       </div>))
+       :
+        triplet.map(item =>(<div key={item.id} className={styles.cards}>
+                            <FaHeart className={styles.heartIcon}/>
+
+        <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
+
+       </div>))       
+       }
+           <div className={styles.arrowHolder}>
+            <IoIosArrowBack onClick={moveCarouselLeft} className={`${styles.ArrowBack} ${styles.same_css_forIcon}`}/>
+            <IoIosArrowForward onClick={moveCarouselRight} className={`${styles.ArrowForward} ${styles.same_css_forIcon}`}/>
+
+          </div>  
+
+    </section>
        
 
-      </Carousel>
-      
+    
+    
+    </>      
   )
  }
 

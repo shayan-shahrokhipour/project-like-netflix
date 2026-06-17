@@ -72,7 +72,6 @@ function App() {
    
        data()
   }
-   console.log(response);
    
     },[response])
     const getValue=(e)=>{

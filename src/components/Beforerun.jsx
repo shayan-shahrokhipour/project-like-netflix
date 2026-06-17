@@ -13,7 +13,6 @@ const Beforerun = ({setValue,value,setResponse,children,setLoading}) => {
      setValue(value=>({...value ,[na] : val}))
    }
    const addHandeler=()=>{
-    console.log(name,family);
     
       if(name && family){
         setLoading(true);

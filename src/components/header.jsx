@@ -3,11 +3,24 @@ import styles from '../assets/styles/header.module.css'
 import { FaHamburger } from "react-icons/fa";
 import { LiaDoorClosedSolid } from "react-icons/lia";
 import Hero from '../components/Hero';
+import { SearchBar } from './SearchBar';
 
 
 const Header = ({children,loading}) => {
    const [letResponsive,setLetResponsive]=useState(false);
-  
+   const [searchValue,setSearchValue]=useState("");
+   const [showModal,setShowModal]=useState(false)  
+       const searchHandeler =(event)=>{
+          setSearchValue(event.target.value)
+          
+       } 
+
+       const inputHandeler=()=>{
+        setShowModal(!showModal)
+        console.log(showModal);
+        
+       }
+      
    const hamburgerMenu =()=>{
        setLetResponsive(!letResponsive)
    }
@@ -24,10 +37,12 @@ const Header = ({children,loading}) => {
         </button>
            </div>
         {children}
-      <input type="text"  placeholder='search quickly'/>
+      <input type="text" id='searchInp' placeholder='search quickly'  value={searchValue} onChange={searchHandeler} onClick={inputHandeler}/>
        </div>
          
     </nav>
+       {showModal ? <SearchBar/> : null}
+
    </header>
    
   </>

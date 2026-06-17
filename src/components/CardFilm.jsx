@@ -10,7 +10,6 @@ const CardFillm = ({showInfo}) => {
  const [getwidth,setGetwidth]=useState(window.innerWidth)
  const [like ,setLike]=useState({})
  
- console.log(getwidth);
  useEffect(()=>{
   const handleResize=()=>setGetwidth(window.innerWidth)
   window.addEventListener("resize",handleResize)
@@ -19,12 +18,10 @@ const CardFillm = ({showInfo}) => {
  
 
   const firstColumn = showInfo.slice(index,index + 1)
-  console.log(firstColumn);
 
 
 
   const triplet = showInfo.slice(index,index+3)
-   console.log(triplet);
    
    const moveCarouselRight=()=>{
     if(index < showInfo.length-3 || index < showInfo.length -1){
@@ -39,7 +36,6 @@ const CardFillm = ({showInfo}) => {
 
       }
    }
-   console.log(index);
 
  //end of carousel 
     const iconHandeler=(item)=>{

@@ -48,14 +48,15 @@ const CardFillm = ({showInfo}) => {
        {getwidth <= 767 ? firstColumn.map(item => (
         <div key={item.id} className={styles.cards}>
         <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
-          
+           <h3>{item.name}</h3>
+         <p>{item.overview}</p>
        </div>))
        :
         triplet.map(item =>(<div key={item.id} className={styles.cards} >
                             <FaHeart style={{color: like[item.id]? "red" : "white"}} className={styles.heartIcon} onClick={()=>iconHandeler(item)}/>
-
         <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
-
+         <h3>{item.name}</h3>
+         <p>{item.overview}</p>
        </div>))       
        }
            <div className={styles.arrowHolder}>

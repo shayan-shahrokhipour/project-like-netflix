@@ -90,7 +90,7 @@ function App() {
     
     ? 
     <>
-     <Header loading={loading}>
+     <Header loading={loading} showInfo={showInfo}>
       <div className={styles.infoHolder}>
          <p>{value.name}</p>
        <p>{value.family}</p>

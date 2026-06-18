@@ -4,6 +4,8 @@
     margin-top: 10px;
     transform: translateY(50px);
     transition: transform ease-in 500ms;
+         z-index: 205;
+
 }
 
 .Hero.liftingText{
@@ -41,7 +43,6 @@ position: absolute;
 .sliderHolder{
     width: 100%;
     height: 100%;
-
 }
 
 .sliderImg{

@@ -6,7 +6,7 @@ import Hero from '../components/Hero';
 import { SearchBar } from './SearchBar';
 
 
-const Header = ({children,loading}) => {
+const Header = ({children,loading,showInfo}) => {
    const [letResponsive,setLetResponsive]=useState(false);
    const [searchValue,setSearchValue]=useState("");
    const [showModal,setShowModal]=useState(false)  
@@ -17,6 +17,7 @@ const Header = ({children,loading}) => {
 
        const inputHandeler=()=>{
         setShowModal(!showModal)
+        setLetResponsive(false)
         console.log(showModal);
         
        }
@@ -41,7 +42,7 @@ const Header = ({children,loading}) => {
        </div>
          
     </nav>
-       {showModal ? <SearchBar/> : null}
+       {showModal ? <SearchBar setShowModal={setShowModal} showInfo={showInfo}/> : null}
 
    </header>
    

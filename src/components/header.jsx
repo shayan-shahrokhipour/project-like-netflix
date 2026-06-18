@@ -18,7 +18,6 @@ const Header = ({children,loading,showInfo}) => {
        const inputHandeler=()=>{
         setShowModal(!showModal)
         setLetResponsive(false)
-        console.log(showModal);
         
        }
       
@@ -42,7 +41,7 @@ const Header = ({children,loading,showInfo}) => {
        </div>
          
     </nav>
-       {showModal ? <SearchBar setShowModal={setShowModal} showInfo={showInfo}/> : null}
+       {showModal ? <SearchBar searchValue={searchValue} setShowModal={setShowModal} showInfo={showInfo}/> : null}
 
    </header>
    

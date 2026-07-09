@@ -9,6 +9,8 @@ import Herostyles from './assets/styles/hero.module.css'
 import { CircleLoader } from 'react-spinners';
 import { CiCircleChevLeft } from "react-icons/ci";
 import { CiCircleChevRight } from "react-icons/ci";
+import { LikeSend } from './context/LikeContext';
+import ListLikeAside from './components/ListLikeAside';
 //start a carousel
 const initial = 0
 const reducer=(state,action)=>{
@@ -28,6 +30,9 @@ function App() {
   //for carousel
   const[slider,dispatch]=useReducer(reducer,initial)
   //=>carousel
+   const [like ,setLike]=useState({})
+    const [listLike,setListLike]=useState([])
+  
    const [info,setInfo]=useState(false)
    const [showInfo,setShowinfo]=useState([])
    const [loading ,setLoading]=useState(false)
@@ -36,6 +41,8 @@ function App() {
     name:'',
     family:''
    })
+
+   
       //dispatch functions
       const carouselLeft=()=>{
        if(slider < showInfo.length - 1){
@@ -66,7 +73,7 @@ function App() {
      setInfo(true)
    //turn off loading
     setLoading(false)
-    console.log(json);
+    console.log(json.results);
     
    } 
    
@@ -79,10 +86,25 @@ function App() {
      const val = e.target.value;
      setValue(value=>({...value ,[na] : val}))
    }
+   const iconHandeler = (item) => {
+    setLike((like) => ({ ...like, [item.id]: !like[item.id] }));
+   const exist = listLike.some(movie=> movie.id === item.id)
+      if(!exist){
+      setListLike(listLike=>[...listLike,item])
+
+      }
+      
+
+     
+    
+      
+      
+     console.log(listLike);     
+  };
   return (
     <>
-    
-    {loading == true &&  <div className={styles.loadingHolder}>
+      <LikeSend value={{like,setLike}}>
+         {loading == true &&  <div className={styles.loadingHolder}>
       <CircleLoader size={100} />
           
       </div>}
@@ -90,6 +112,7 @@ function App() {
     
     ? 
     <>
+      
      <Header loading={loading} showInfo={showInfo}>
       <div className={styles.infoHolder}>
          <p>{value.name}</p>
@@ -97,23 +120,30 @@ function App() {
       </div>
     </Header>
         <Hero loading={loading}>
-           <div className={Herostyles.slider}>
+           <div className={Object.values(like).some(item=> item ===true) ?Herostyles.useflex : null}>
+              <div className={Object.values(like).some(item=> item ===true) ? Herostyles.active :Herostyles.slider}>
              <div className={Herostyles.sliderHolder}>
              <img  className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${showInfo[slider].backdrop_path}`}></img>
             </div>
-            <CiCircleChevLeft className={`${Herostyles.icons} ${Herostyles.leftIcon}`} onClick={carouselLeft}/>
-            <CiCircleChevRight className={`${Herostyles.icons} ${Herostyles.rightIcon}`} onClick={carouselright} />
+            <CiCircleChevLeft className={`${Herostyles.icons} ${Herostyles.leftIcon} `} onClick={carouselLeft}/>
+            <CiCircleChevRight className={`${Herostyles.icons} ${Herostyles.rightIcon} ${Object.values(like).some(item=> item ===true) ? Herostyles.iconActive : null}`} onClick={carouselright} />
            </div>
-        </Hero>
+           {Object.values(like).some(item=> item ===true) ? <ListLikeAside setListLike={setListLike} listLike={listLike} /> : null}
+           </div>
+              
+           
+         </Hero>
      
             
-        <CardFillm showInfo={showInfo}/>      
+        <CardFillm showInfo={showInfo} iconHandeler={iconHandeler}/>      
     </>
 
       :
        <Beforerun  value={value} setValue={setValue} setResponse={setResponse} setLoading={setLoading}/>
         
         }
+      </LikeSend>
+
 
     </>
   )

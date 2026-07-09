@@ -11,7 +11,7 @@
 
 .cards{
     width: 22%;
-    height: 300px;
+    height: 350px;
          background-color: #014a5f;
          border-radius: 10px;
          margin: 0 auto;
@@ -47,11 +47,14 @@
 
 .cards h3{
     color: #fff;
+        padding: 10px;
+
 }
 
 .cards p{
     color: #fff;
     text-align: center;
+    padding: 10px;
 }
 
 @media only screen and (max-width:767px){

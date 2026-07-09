@@ -24,6 +24,11 @@
     position: relative;
 }
 
+.active{
+    width: 80%;
+}
+
+
 .icons{
 position: absolute;
     top: 350px;
@@ -36,8 +41,18 @@ position: absolute;
     left: 10%;
 }
 
+
+
 .rightIcon{
     right: 10%;
+}
+
+.iconActive{
+    right: 28%;
+}
+
+.useflex{
+    display: flex;
 }
 
 .sliderHolder{
@@ -52,6 +67,7 @@ position: absolute;
     margin: 0 auto;
      border-radius: 10px;
 }
+
 
 
 @media only screen and (max-width:768px){

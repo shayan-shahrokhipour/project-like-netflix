@@ -89,12 +89,14 @@ function App() {
    const iconHandeler = (item) => {
     setLike((like) => ({ ...like, [item.id]: !like[item.id] }));
    const exist = listLike.some(movie=> movie.id === item.id)
-      if(!exist){
-      setListLike(listLike=>[...listLike,item])
+       if(!exist){
+              setListLike(listLike=>[...listLike,item])
 
-      }
+       }else{
+           setListLike(listLike=>listLike.filter(mov=> mov.id != item.id)) 
+            
+       }
       
-
      
     
       
@@ -128,14 +130,18 @@ function App() {
             <CiCircleChevLeft className={`${Herostyles.icons} ${Herostyles.leftIcon} `} onClick={carouselLeft}/>
             <CiCircleChevRight className={`${Herostyles.icons} ${Herostyles.rightIcon} ${Object.values(like).some(item=> item ===true) ? Herostyles.iconActive : null}`} onClick={carouselright} />
            </div>
-           {Object.values(like).some(item=> item ===true) ? <ListLikeAside setListLike={setListLike} listLike={listLike} /> : null}
+            { Object.values(like).some(item=> item ===true) ?<div className={Herostyles.asideHolder}>
+               <ListLikeAside setListLike={setListLike} listLike={listLike} /> 
+            </div>
+            : null
+            }
            </div>
               
            
          </Hero>
      
             
-        <CardFillm showInfo={showInfo} iconHandeler={iconHandeler}/>      
+        <CardFillm showInfo={showInfo} iconHandeler={iconHandeler}/> 
     </>
 
       :

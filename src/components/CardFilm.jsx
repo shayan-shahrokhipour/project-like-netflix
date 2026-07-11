@@ -1,10 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
 import styles from "../assets/styles/cardfilm.module.css";
+
 import { FaHeart } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useContext } from "react";
 import { LikeSend } from "../context/LikeContext";
+import Category from "./Category";
 //createContext
 
 const CardFillm = ({ showInfo,iconHandeler }) => {
@@ -23,6 +25,12 @@ const CardFillm = ({ showInfo,iconHandeler }) => {
      
     
   }, []);
+
+   const categoryHandeler=()=>{
+          console.log(showInfo[0].popularity);
+          
+  
+    }
 
   const firstColumn = showInfo.slice(index, index + 1);
 
@@ -45,7 +53,9 @@ const CardFillm = ({ showInfo,iconHandeler }) => {
 
   return (
     <>
-      <section className={styles.cardHolder}>
+     <div className={styles.info}>
+      <h1>List Of Movies</h1>
+       <section className={styles.cardHolder}>
         {getwidth <= 767
           ? firstColumn.map((item) => (
               <div key={item.id} className={styles.cards}>
@@ -63,6 +73,7 @@ const CardFillm = ({ showInfo,iconHandeler }) => {
               </div>
             ))
           : triplet.map((item) => (
+
               <div key={item.id} className={styles.cards}>
                 <FaHeart
                   style={{ color: like[item.id] ? "red" : "white" }}
@@ -88,6 +99,15 @@ const CardFillm = ({ showInfo,iconHandeler }) => {
           />
         </div>
       </section>
+     </div>
+     <section className={styles.categoryFilms}>
+        <h1>Categories</h1>
+        <div className={styles.pills}>
+           <p onClick={categoryHandeler} className={`${styles.pillstyle} ${styles.All} ${styles.active}`}>All</p>
+           <p className={`${styles.pillstyle} ${styles.All}`}>Popular</p>
+    </div>
+        {showInfo.map(item=><Category key={item.id}/> )}
+    </section>
     </>
   );
 };

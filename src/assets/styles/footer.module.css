@@ -1,0 +1,155 @@
+footer{
+    width: 100%;
+    height:300px;
+    background: linear-gradient(145deg, #065f7a, #033e51); 
+box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) inset, 0 8px 30px rgba(0, 0, 0, 0.35);   
+ display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+.boxHolder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.firstBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 30%;
+    height: 100px;
+   border: 1px solid #128cad;
+   border-radius: 10px;
+}
+
+.secondBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    width: 30%;
+    height: 100px;
+   border: 1px solid #128cad;
+   border-radius: 10px;
+}
+
+.secondBox p:first-child{
+    font-size: 20px;
+    color: #fff;
+}
+
+.secondBox p:last-child{
+    color: #fff;
+}
+
+.firstBox p{
+    font-size: 20px;
+    color: #fff;
+}
+
+.mediaHolder{
+    display: flex;
+    gap: 40px;
+}
+
+.mediaIcon{
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.FirstRowLink ul, .secondRowLink ul{
+    display: flex;
+    gap: 25px;
+}
+
+.FirstRowLink ul li ,  .secondRowLink ul li{
+    list-style: none;
+    display: flex;
+    gap: 5px;
+}
+.FirstRowLink ul li a , .secondRowLink ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.returnIcon{
+    color: #fff;
+}
+
+
+.buttonHolder{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.buttonfooter{
+    width: 20%;
+    height: 85%;
+    background-color: #128cad;
+         border-radius: 45px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) inset, 0 8px 30px rgba(0, 0, 0, 0.35);  
+        color: #fff;
+}
+
+.brandName{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.brandName p:first-child{
+    color: #fff;
+    font-size: 18px;
+}
+
+.brandName p:last-child{
+    color: #fff;
+    font-size: 12px;
+}
+
+ 
+
+
+@media only screen and (max-width:767px){
+    .boxHolder{
+        display: flex;
+        flex-direction: column;
+    }.firstBox,.secondBox{
+        border: none;
+        width: 90%;
+        margin: 0 auto;
+    }.FirstRowLink ul , .secondRowLink ul {
+        max-width: 70%;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }footer{
+        height: auto;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .firstBox,.secondBox{
+        width: 35%;
+    }
+}

@@ -1,0 +1,29 @@
+
+.cardInfo{
+    width: 23%;
+    height:400px;
+   background-color: #014a5f;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.cardInfo p{
+    margin-top: 15px;
+    color: #fff;
+}
+
+.cardInfo button{
+    margin-top: 15px;
+}
+
+.cardInfo img{
+    width: 100%;
+    height: 200px;
+}
+
+@media only screen and (max-width:767px){
+    .cardInfo{
+        width: 90%;
+        margin: 0 auto;
+    }
+}

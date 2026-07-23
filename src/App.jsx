@@ -11,17 +11,22 @@ import { CiCircleChevLeft } from "react-icons/ci";
 import { CiCircleChevRight } from "react-icons/ci";
 import { LikeSend } from './context/LikeContext';
 import ListLikeAside from './components/ListLikeAside';
+import Modals from './modals/modals';
+import Footer from './components/Footer';
 //start a carousel
-const initial = 0
+const initial = {
+  index:0,
+  direction:""
+}
 const reducer=(state,action)=>{
 if(action.type=="plus"){
-       return(state + 1) 
+       return{index:state.index + 1,direction:"right"} 
 }else if(action.type=="minus" ){  
-             return(state - 1) 
+             return {index:state.index - 1}
 }else if(action.type=="reset"){
-  return(state = 0)
+  return {index :state.index = 0,direction:"left"}
 }else if(action.type=="backtoend"){
-  return(state=action.value)
+  return{index:state.index=action.value}
 }
 
 }
@@ -32,7 +37,7 @@ function App() {
   //=>carousel
    const [like ,setLike]=useState({})
     const [listLike,setListLike]=useState([])
-  
+    const [showDetails , setShowDetails]=useState(false)
    const [info,setInfo]=useState(false)
    const [showInfo,setShowinfo]=useState([])
    const [loading ,setLoading]=useState(false)
@@ -41,11 +46,23 @@ function App() {
     name:'',
     family:''
    })
+        const [selectmovie,setSelectmovie]=useState([]);
 
+ //selectMovie
+     
+   const showM=(movie)=>{
+     setShowDetails(!showDetails)
+     setSelectmovie(movie)
+    
+     
+   }     
+
+  
+ 
    
       //dispatch functions
       const carouselLeft=()=>{
-       if(slider < showInfo.length - 1){
+       if(slider.index < showInfo.length - 1){
          dispatch({type :"plus"}
          )
        }else{
@@ -54,7 +71,7 @@ function App() {
       }
 
       const carouselright=()=>{
-       if(slider>0){
+       if(slider.index>0){
          dispatch({type:"minus"})
        }else{
         dispatch({type:"backtoend",value:showInfo.length-1})
@@ -63,7 +80,7 @@ function App() {
    //end of dispatch functions
    //get Data 
      useEffect(()=>{
-     if(response){
+     if(response && showInfo.length===0){
       async function data(){
      const options =  {headers: {accept: 'application/json'}};
     const res =  await fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&api_key=5c6ea490a269cfcefee83b4aefce6551',options)
@@ -73,7 +90,6 @@ function App() {
      setInfo(true)
    //turn off loading
     setLoading(false)
-    console.log(json.results);
     
    } 
    
@@ -105,7 +121,7 @@ function App() {
   };
   return (
     <>
-      <LikeSend value={{like,setLike}}>
+      <LikeSend value={{like,setLike,selectmovie,setSelectmovie,showM}}>
          {loading == true &&  <div className={styles.loadingHolder}>
       <CircleLoader size={100} />
           
@@ -125,7 +141,8 @@ function App() {
            <div className={Object.values(like).some(item=> item ===true) ?Herostyles.useflex : null}>
               <div className={Object.values(like).some(item=> item ===true) ? Herostyles.active :Herostyles.slider}>
              <div className={Herostyles.sliderHolder}>
-             <img  className={Herostyles.sliderImg} src={`https://image.tmdb.org/t/p/original${showInfo[slider].backdrop_path}`}></img>
+             <img  key={showInfo[slider.index].id}
+              className={`${Herostyles.sliderImg} ${slider.direction==="right" ? Herostyles.rightAnimation : Herostyles.leftAnimation }`} src={`https://image.tmdb.org/t/p/original${showInfo[slider.index].backdrop_path}`}></img>
             </div>
             <CiCircleChevLeft className={`${Herostyles.icons} ${Herostyles.leftIcon} `} onClick={carouselLeft}/>
             <CiCircleChevRight className={`${Herostyles.icons} ${Herostyles.rightIcon} ${Object.values(like).some(item=> item ===true) ? Herostyles.iconActive : null}`} onClick={carouselright} />
@@ -141,16 +158,22 @@ function App() {
          </Hero>
      
             
-        <CardFillm showInfo={showInfo} iconHandeler={iconHandeler}/> 
+        <CardFillm showDetails={showDetails} setShowDetails={setShowDetails} showInfo={showInfo} iconHandeler={iconHandeler}/> 
+    {showDetails ? <Modals showInfo={showInfo} selectmovie={selectmovie} showDetails={showDetails} setShowDetails={setShowDetails}/>
+        :
+        null
+        }
+        <Footer/>
     </>
 
       :
        <Beforerun  value={value} setValue={setValue} setResponse={setResponse} setLoading={setLoading}/>
         
         }
+
       </LikeSend>
-
-
+      {showDetails && <div className={styles.overlay}></div>
+}
     </>
   )
 }

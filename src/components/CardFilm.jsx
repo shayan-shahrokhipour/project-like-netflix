@@ -7,31 +7,46 @@ import { IoIosArrowForward } from "react-icons/io";
 import { useContext } from "react";
 import { LikeSend } from "../context/LikeContext";
 import Category from "./Category";
+
 //createContext
 
-const CardFillm = ({ showInfo,iconHandeler }) => {
+const CardFillm = ({ showInfo,iconHandeler,showDetails,setShowDetails}) => {
   const [index, setIndex] = useState(0);
   const [getwidth, setGetwidth] = useState(window.innerWidth);
+  const [popular ,setPopular]=useState([])
   const getlike = useContext(LikeSend);
-
   const { like, setLike } = getlike;
+  
+
+const categoryHandeler=()=>{
+   const sortList =   [...showInfo].sort((a,b)=>{
+        const firstPopularty = a.popularity 
+        const secondPopularity = b.popularity
+          return secondPopularity - firstPopularty  
+       })  
+       setPopular(sortList.slice(0,6))  
+         
+       }
+
+       const allHandeler=()=>{
+           setPopular(showInfo)
+
+       }
+
 
 
   useEffect((item) => {
     const handleResize = () => setGetwidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-      
+
      
     
   }, []);
-
-   const categoryHandeler=()=>{
-          console.log(showInfo[0].popularity);
-          
   
-    }
+  
 
+   
   const firstColumn = showInfo.slice(index, index + 1);
 
   const triplet = showInfo.slice(index, index + 3);
@@ -103,11 +118,19 @@ const CardFillm = ({ showInfo,iconHandeler }) => {
      <section className={styles.categoryFilms}>
         <h1>Categories</h1>
         <div className={styles.pills}>
-           <p onClick={categoryHandeler} className={`${styles.pillstyle} ${styles.All} ${styles.active}`}>All</p>
-           <p className={`${styles.pillstyle} ${styles.All}`}>Popular</p>
+           <p onClick={allHandeler}  className={`${styles.pillstyle} ${styles.All} ${styles.active}`}>All</p>
+           <p onClick={categoryHandeler} className={`${styles.pillstyle} ${styles.All}`}>Popular</p>
     </div>
-        {showInfo.map(item=><Category key={item.id}/> )}
-    </section>
+    </section>  
+     <div className={styles.cardcategory}>
+      {popular.length>0 ? popular.map(item=><Category  data={item} key={item.id}/>  )
+      
+      : 
+       showInfo.map(item=><Category  data={item} key={item.id} showDetails={showDetails} setShowDetails={setShowDetails}/>)
+      }
+                 
+     </div>
+
     </>
   );
 };

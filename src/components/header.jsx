@@ -17,7 +17,6 @@ const Header = ({children,loading,showInfo}) => {
 
        const inputHandeler=()=>{
         setShowModal(!showModal)
-        setLetResponsive(false)
         
        }
       

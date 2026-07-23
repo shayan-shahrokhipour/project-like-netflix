@@ -38,7 +38,7 @@
 
 .icons{
 position: absolute;
-    top: 350px;
+    top: 170px;
      color: #ffff;
             font-size: 40px;
     cursor: pointer;
@@ -65,9 +65,42 @@ position: absolute;
     height: 100%;
 }
 
+
+.rightAnimation{
+    animation: slidingRight 400ms ease;
+
+}
+
+.leftAnimation{
+    animation: slidingLeft 400ms ease;
+
+}
+
+@keyframes slidingRight{
+    from{
+       opacity: 0;
+       transform: translateX(50px);
+    }to{
+        opacity: 1;
+        transform: translateX(0);
+
+    }
+}
+
+@keyframes slidingLeft{
+    from{
+       opacity: 0;
+       transform: translateX(-50px);
+    }to{
+        opacity: 1;
+        transform: translateX(0);
+
+    }
+}
+
 .sliderImg{
     width: 90%;
-    height: 720px;
+    height: 400px;
     display: block;
     margin: 0 auto;
      border-radius: 10px;
@@ -94,7 +127,7 @@ position: absolute;
     }.Hero P{
          text-align: start;
         padding: 5%;
-        font-weight: 100;
+        font-size: 20px;
     }.sliderImg{
         height: 300px; 
     }.icons{
